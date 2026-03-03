@@ -1,7 +1,11 @@
-<?php namespace Vsch\TranslationManager;
+<?php
+
+namespace Vsch\TranslationManager;
 
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use Vsch\TranslationManager\Repositories\Interfaces\ITranslatorRepository;
+use Vsch\TranslationManager\Repositories\TranslatorRepository;
 
 class ManagerServiceProvider extends ServiceProvider
 {
@@ -40,6 +44,11 @@ class ManagerServiceProvider extends ServiceProvider
             $manager = $app->make('Vsch\TranslationManager\Manager');
             return $manager;
         });
+
+        $this->app->bind(
+            ITranslatorRepository::class,
+            TranslatorRepository::class
+        );
 
         $this->app->singleton('command.translation-manager.reset', function ($app) {
             return new Console\ResetCommand($app[self::PACKAGE]);

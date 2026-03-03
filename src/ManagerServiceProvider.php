@@ -45,11 +45,6 @@ class ManagerServiceProvider extends ServiceProvider
             return $manager;
         });
         
-        $this->app->alias(
-            \Illuminate\Contracts\Translation\Translator::class,
-            'translator'
-        );
-        
         $this->app->bind(
             ITranslatorRepository::class,
             MysqlTranslatorRepository::class

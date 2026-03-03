@@ -44,7 +44,12 @@ class ManagerServiceProvider extends ServiceProvider
             $manager = $app->make('Vsch\TranslationManager\Manager');
             return $manager;
         });
-
+        
+        $this->app->alias(
+            \Illuminate\Contracts\Translation\Translator::class,
+            'translator'
+        );
+        
         $this->app->bind(
             ITranslatorRepository::class,
             MysqlTranslatorRepository::class

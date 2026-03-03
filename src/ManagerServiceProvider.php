@@ -5,7 +5,7 @@ namespace Vsch\TranslationManager;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Vsch\TranslationManager\Repositories\Interfaces\ITranslatorRepository;
-use Vsch\TranslationManager\Repositories\TranslatorRepository;
+use Vsch\TranslationManager\Repositories\MysqlTranslatorRepository;
 
 class ManagerServiceProvider extends ServiceProvider
 {
@@ -47,7 +47,7 @@ class ManagerServiceProvider extends ServiceProvider
 
         $this->app->bind(
             ITranslatorRepository::class,
-            TranslatorRepository::class
+            MysqlTranslatorRepository::class
         );
 
         $this->app->singleton('command.translation-manager.reset', function ($app) {

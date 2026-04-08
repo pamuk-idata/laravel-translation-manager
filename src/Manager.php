@@ -12,6 +12,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
 use Symfony\Component\Finder\Finder;
 use Vsch\TranslationManager\Classes\PathTemplateResolver;
 use Vsch\TranslationManager\Classes\TranslationFileRewriter;
@@ -390,7 +391,7 @@ class Manager
             $this->augmentedGroupReverseList = [];
 
             foreach ($groupList as $group) {
-                if (starts_with($group, ["vnd:", "wbn:"])) {
+                if (Str::startsWith($group, ["vnd:", "wbn:"])) {
                     // we need this one
                     $parts = explode('.', $group, 2);
                     if (count($parts) === 2) {

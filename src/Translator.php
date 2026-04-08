@@ -36,6 +36,7 @@ class Translator extends LaravelTranslator
     protected $usedKeys = array();
     
     protected $customPostProcessor = null;
+    protected $app;
 
     /**
      * Translator constructor.

@@ -1299,8 +1299,8 @@ class Manager
                     foreach ($matches[3] as $index => $key) {
                         $quote = $matches[2][$index][0];
                         $keyValue = $key[0];
-                        if ($quote == '\'' && !str_contains($keyValue, ["\"", "'", "->",]) ||
-                            $quote == '"' && !str_contains($keyValue, ["$", "\"", "'", "->",])
+                        if ($quote == '\'' && !Str::contains($keyValue, ["\"", "'", "->",]) ||
+                            $quote == '"' && !Str::contains($keyValue, ["$", "\"", "'", "->",])
                         ) {
                             if ($fileLines == null) {
                                 $fileLines = self::computeFileLines($fileContents);
@@ -1667,7 +1667,7 @@ class Manager
             $group = $translation->group;
             $key = $translation->key;
             if (!array_key_exists($key, $nonArrays)) {
-                $value = array_get($tree[$translation->locale][$translation->group], $translation->key);
+                $value = Arr::get($tree[$translation->locale][$translation->group], $translation->key);
 
                 if (is_array($value)) {
                     // this one is an array while it is a translation in the source 

@@ -1689,7 +1689,7 @@ class Controller extends BaseController
                 ));
 
                 $markdownSuffix = $this->manager->config(Manager::MARKDOWN_KEY_SUFFIX);
-                $isMarkdownKey = $markdownSuffix != '' && ends_with($key, $markdownSuffix) && $key !== $markdownSuffix;
+                $isMarkdownKey = $markdownSuffix != '' && str_ends_with($key, $markdownSuffix) && $key !== $markdownSuffix;
 
                 if (!$isMarkdownKey) {
                     // strip off trailing spaces and eol's and &nbsps; that seem to be added when multiple spaces are entered in the x-editable textarea

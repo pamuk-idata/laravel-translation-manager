@@ -12,6 +12,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Symfony\Component\Finder\Finder;
 use Vsch\TranslationManager\Classes\PathTemplateResolver;
@@ -1652,7 +1653,7 @@ class Manager
     {
         $array = array();
         foreach ($translations as $translation) {
-            array_set($array[$translation->locale][$translation->group], $translation->key, $translation->value);
+            Arr::set($array[$translation->locale][$translation->group], $translation->key, $translation->value);
         }
         return $array;
     }
